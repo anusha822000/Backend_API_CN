@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Nr14yBL8SF4pAnUnmzTQqXZR4eypLZ0nHQ+m9skIcfQ=",
+  "Source": "RoleManagementApi",
+  "BasePath": "_content/RoleManagementApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
