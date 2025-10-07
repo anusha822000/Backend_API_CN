@@ -1,0 +1,204 @@
+--1.Write a query to list all the employees who are working as clerk 
+select *
+from EMP
+where JOB= 'clerk';
+
+--2.Write a query to list the employees who are working as clerks or managers
+SELECT *
+FROM EMP
+WHERE JOB='CLERK' OR JOB='MANAGER';
+
+
+--3.Write a query to list the employees whose salaries are within the range of 500 and 1000 
+SELECT *
+FROM EMP
+WHERE SAL BETWEEN 500 AND 1000;
+
+--4.Write a query to list the employees who have joined in the month of December 
+SELECT *
+FROM EMP
+WHERE MONTH(HIREDATE)=12;
+
+--5.Write a query to get the current date 
+SELECT CURRENT_TIMESTAMP
+
+--6.Write a query to list the employees whose salaries are not within  the range of 1000 and 2500
+SELECT *
+FROM EMP
+WHERE SAL NOT BETWEEN 1000 AND 2500; 
+
+
+--7.Write a query who are getting 800, 950, 3000,5000 
+SELECT *
+FROM EMP
+WHERE SAL IN (800,950,3000,5000);
+
+--8.To list all the employees whose names are having ‘L’ as second character  
+SELECT *
+FROM EMP
+WHERE ENAME LIKE '_L%';
+
+--9.To list all the employees whose names are having ‘D’ as last character
+SELECT *
+FROM EMP
+WHERE ENAME LIKE '%D';
+
+
+--10.To list all the employees whose names are having just 5 characters as length?
+SELECT ENAME
+FROM EMP 
+WHERE LEN(ENAME)=5
+			
+
+--11.Display those employees who's name contains "A"? 
+SELECT *
+FROM EMP
+WHERE ENAME LIKE '%A%';
+
+
+--12.To list all the employees whose names are starting with ‘T’ and ending with ‘R
+SELECT *
+FROM EMP
+WHERE ENAME LIKE 'T%R';
+
+--13.Display those employee who joined the company before 19th of the month? 
+SELECT *
+FROM EMP
+WHERE DAY(HIREDATE)<19
+
+--14.Who is drawing salary less than 3500 
+SELECT *
+FROM EMP
+WHERE SAL < 3500;
+
+--15.Who is the President for organization? 
+SELECT ENAME,JOB
+FROM EMP
+WHERE JOB='PRESIDENT';
+
+--16.List the details of all the clerks 
+SELECT *
+FROM EMP
+WHERE JOB='CLERK';
+
+-- 17.List all details of all the managers? 
+SELECT *
+FROM EMP
+WHERE JOB='MANAGER';
+
+--18.What is the salary of 'king'? 
+SELECT ENAME,SAL
+FROM EMP
+WHERE ENAME='KING';
+
+
+----19.What is the employee number of 'James' s 
+SELECT ENAME,EMPNO
+FROM EMP
+WHERE ENAME='JAMES';
+
+
+--20.List the names in which 3rd? character is L 
+SELECT *
+FROM EMP
+WHERE ENAME LIKE '__L%';
+
+--21.List employees who joined before april-1981? 
+SELECT *
+FROM EMP
+WHERE MONTH(HIREDATE)<4 AND YEAR(HIREDATE)<1981
+
+--22.How many departments are there 
+SELECT COUNT(DEPTNO) AS 'NO OF DEPT'
+FROM  DEPT
+
+--23.What is the highest commission paid 
+SELECT MAX (COMM) AS 'HIGHCOMM'
+FROM EMP
+
+--24.What is the highest salary among analyst 
+SELECT JOB, MAX(SAL) AS 'HIGHSAL'
+FROM EMP
+WHERE JOB='ANALYST'
+GROUP BY JOB;
+
+
+--25.
+SELECT DEPTNO, AVG(SAL) AS 'AVGSAL' 
+FROM EMP
+GROUP BY DEPTNO;
+ 
+ --26.Give employee details for employees drawing commission? 
+SELECT *
+FROM EMP
+WHERE COMM>0
+
+--27.What is the salary of following: King, Blake, Ford, Smith 
+SELECT ENAME,SAL
+FROM EMP
+WHERE ENAME IN ('King', 'Blake', 'Ford', 'Smith') 
+
+--28
+SELECT * 
+FROM EMP
+WHERE MONTH(HIREDATE) = 2;
+
+--29
+SELECT AVG(COMM) AS AVGCOMM
+FROM EMP;
+
+--30
+SELECT ROUND(SUM(SAL),4) AS TOTALSAL
+FROM EMP;
+
+--31
+SELECT COUNT(EMPNO )
+FROM EMP
+WHERE YEAR(HIREDATE) = 1981;
+
+--32
+SELECT MONTH(HIREDATE) AS JOINED
+FROM EMP
+WHERE ENAME='FORD'
+
+--33.Who is drawing salary less than scott
+SELECT *
+FROM EMP
+WHERE SAL<(SELECT AVG(SAL)
+			FROM EMP 
+			WHERE ENAME='SCOTT');
+
+--34.List the name and designation of the employees who does not report to anybody
+SELECT ENAME,JOB
+FROM EMP
+WHERE MGR IS NULL
+
+--35 list the employees who draws salary more than the average salary on their department.
+SELECT E.ENAME,E.JOB,E.SAL
+FROM EMP E
+WHERE SAL>(SELECT AVG(SAL)
+			FROM EMP E
+			WHERE E.DEPTNO=E.DEPTNO);
+
+--36 list the employees who draws salary more than the average salary on their department sort it based on department name
+
+SELECT E.ENAME,E.JOB,E.SAL
+FROM EMP E,DEPT D
+WHERE SAL>(SELECT AVG(SAL)
+			FROM EMP E,DEPT D
+			WHERE E.DEPTNO=E.DEPTNO)
+			ORDER BY D.DNAME
+
+
+--37 Write a query that will give you the names and jobs of all employees in New York with a commission above 1000 
+
+SELECT E.ENAME,E.JOB
+FROM EMP E,DEPT D
+WHERE  D.LOC='NEWYORK' AND E.COMM>1000
+
+--38 How many employees work in Chicago?
+SELECT COUNT(*) AS num_employees_in_chicago
+FROM EMP E
+JOIN DEPT D 
+ON E.DEPTNO = D.DEPTNO
+WHERE D.LOC = 'Chicago';

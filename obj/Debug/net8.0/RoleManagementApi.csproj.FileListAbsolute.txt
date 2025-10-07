@@ -272,3 +272,4 @@ C:\Users\anusharani.mk\POC_backend\RoleManagementApi\obj\Debug\net8.0\refint\Rol
 C:\Users\anusharani.mk\POC_backend\RoleManagementApi\obj\Debug\net8.0\RoleManagementApi.pdb
 C:\Users\anusharani.mk\POC_backend\RoleManagementApi\obj\Debug\net8.0\RoleManagementApi.genruntimeconfig.cache
 C:\Users\anusharani.mk\POC_backend\RoleManagementApi\obj\Debug\net8.0\ref\RoleManagementApi.dll
+C:\Users\anusharani.mk\POC_backend\RoleManagementApi\obj\Debug\net8.0\RoleManagementApi.sourcelink.json
